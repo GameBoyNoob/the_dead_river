@@ -10,6 +10,7 @@ label day2_intro:
 
     a "Кого примем первым сегодня?"
 
+label day2_choice
     menu:
         "Житель с жалобой на свалку":
             jump case_dump
@@ -24,17 +25,13 @@ label case_thoughts:
 
     if rating >= 5:
         g "Несмотря на то, что я действовал решительно, строго, кажется, еще есть куда стремиться"
+        jump day2_choice
     elif rating >= 0:
         g "Я сомневаюсь в том, что все их проблемы стоят моего внимания, но я сделал, что мог"
+        jump day2_choice
     else:
         g"Жители сомневаются в моей компетентности, но и они сами не решают свои проблемы"
-
-    menu:
-        "Житель с жалобой на свалку":
-            jump case_dump
-        "Владелец автомойки":
-            jump case_carwash
-
+        jump day2_choice
 
 label case_dump:
     show citizen at left
