@@ -1,7 +1,6 @@
 ﻿# Вы можете расположить сценарий своей игры в этом файле.
 
 # Определение персонажей игры.
-define rating = 0
 define g = Character('Георгий', color="#b4befe")
 define p = Character('Министр', color="#cba6f7")
 define a = Character('Настя', color="#f38ba8")
