@@ -10,7 +10,7 @@ label day2_intro:
 
     a "Кого примем первым сегодня?"
 
-label day2_choice
+label day2_choice:
     menu:
         "Житель с жалобой на свалку":
             jump case_dump
@@ -61,6 +61,7 @@ label dump_choice:
                 $ budget -= 2000
                 $ rating += 2
                 "Житель" "Спасибо! Надеюсь, теперь порядок наведёте."
+                "Оставшийся бюджет: [budget]"
                 hide citizen
                 jump after_case3
             else:
@@ -71,6 +72,7 @@ label dump_choice:
             $ budget += 500
             $ rating += 1
             "Житель" "Штрафуйте, только бы убрали!"
+            "Оставшийся бюджет: [budget]"
             hide citizen
             jump after_case3
         "Порекомендовать жителям самим убирать":
@@ -108,6 +110,7 @@ label carwash_decision:
                 $ budget -= 1000
                 $ rating += 2
                 "Владелец автомойки" "Спасибо! Теперь смогу поставить фильтры."
+                "Оставшийся бюджет: [budget]"
                 hide carwash_owner
                 jump after_case3
             else:
@@ -123,6 +126,7 @@ label carwash_decision:
             $ budget += 500
             $ rating -= 1
             "Владелец автомойки" "Да за что! Я и так еле держусь."
+            "Оставшийся бюджет: [budget]"
             hide carwash_owner
             jump after_case3
         "Порекомендовать закрыться на время проверки":
