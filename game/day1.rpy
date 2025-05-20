@@ -1,15 +1,18 @@
 label day1_intro:
-    show city
+    show intro1
     with dissolve
-    play music "ost/intro.ogg" volume 0.6 fadeout 2.0 fadein 2.0 loop
+    play music "ost/Project_8.ogg" volume 1 fadeout 2.0 fadein 2.0 loop
 
     """На берегах широкой реки раскинулись два города — соперники, веками соревновавшиеся в изобретательности и развитии.
+
     Их противостояние было источником вдохновения, но однажды всё изменилось.
 
     После долгих лет борьбы один город уступил, и казалось, что наступил мир.
+
     Но вместе с этим пришла новая беда: в проигравшем городе началась экологическая катастрофа.
 
     Заводы, спешно построенные ради экономического рывка, перестали заботиться о реке.
+
     Вода потемнела, рыба исчезла, а жители всё чаще стали болеть.
 
     Теперь судьба города — и самой реки — в твоих руках.
@@ -30,11 +33,12 @@ label day1_intro:
         rating = 0
 
 label day1_start:
+    hide intro1
+    show intro2
     with dissolve
-    show fun
     play music "ost/ambient_2.ogg" volume 0.6 fadeout 2.0 fadein 2.0 loop
-
     show g say
+
     g "Мне как-то Георгий будет ближе."
 
     """И вообще с самого детства я мечтал стать футболистом.
@@ -42,17 +46,24 @@ label day1_start:
     Но родители решили отправить меня на танцы."""
 
     hide g
+    show field
+    with dissolve
 
     "Родители""""Да что тебе этот футбол даст? На танцах куда безопаснее!
 
     Может, ты девушку себе найдешь наконец."""
 
+    hide field
+    with dissolve
+    show intro2
     show g talk
 
     g"А я им говорю."
 
     hide g
-
+    hide intro2
+    with dissolve
+    show field
     show g sad
 
     "Гоша""""Футбол - это моя жизнь.
@@ -62,7 +73,9 @@ label day1_start:
     Общаться с моими товарищами, надеясь в будущем выйти на большую арену."""
 
     hide g
-
+    hide field
+    with dissolve
+    show intro2
     show g talk
 
     g"""Но мои слова поняли не так как я хотел.
