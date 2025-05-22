@@ -15,6 +15,7 @@ define boy = Character('Мальчишка', color="#89dceb")
 define k1 = Character('Школьник 1', color="#f9e2af")
 define k2 = Character('Школьник 2', color="#f9e2af")
 define k3 = Character('Школьник 3', color="#f9e2af")
+define pensioner = Character('Пенсионер')
 define audio.g_voice1 = "audio/voice/g_voice1.opus"
 image city = "bg/city.png"
 image fun = "bg/fun.png"
