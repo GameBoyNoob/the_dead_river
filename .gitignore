@@ -1,5 +1,6 @@
 errors.txt
 log.txt
+game/images/sprites/*.png~
 game/cache/
 game/saves/
 game/*.rpyc
