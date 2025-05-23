@@ -13,31 +13,25 @@ label day1_intro:
     # Music with improved fade timing
     play music "ost/Project_8.ogg" volume 0.7 fadeout 2.0 fadein 3.0 loop
     
-    # Text presentation with styling and pacing - using custom character objects
-    # Define narrator variants for different emotional tones
-    $ narrator_slow = Character(None, what_slow_cps=25, what_italic=True)
-    $ narrator_normal = Character(None, what_slow_cps=40)
-    $ narrator_dramatic = Character(None, what_slow_cps=30, what_bold=True)
-    
-    $ narrator_slow("На берегах широкой реки раскинулись два города — соперники, веками соревновавшиеся в изобретательности и развитии.")
+    narrator_slow "На берегах широкой реки раскинулись два города — соперники, веками соревновавшиеся в изобретательности и развитии."
     pause 0.5
     
-    $ narrator_slow("Их противостояние было источником вдохновения, но однажды всё изменилось.")
+    narrator_slow "Их противостояние было источником вдохновения, но однажды всё изменилось."
     pause 1.0
     
     show intro1 at Position(xpos=0.5, xanchor=0.5, ypos=0.5, yanchor=0.5) with Dissolve(1.0)
     
-    $ narrator_normal("После долгих лет борьбы один город уступил, и казалось, что наступил мир.")
+    narrator_normal "После долгих лет борьбы один город уступил, и казалось, что наступил мир."
     pause 0.3
 
-    $ narrator_normal("Но вместе с этим пришла новая беда: в проигравшем городе началась экологическая катастрофа.")
+    narrator_normal "Но вместе с этим пришла новая беда: в проигравшем городе началась экологическая катастрофа." 
     pause 0.5
     
     # Visual emphasis with a subtle shake and audio cue
     show intro1 with vpunch
     play sound "audio/industrial_noise.ogg" volume 0.5
     
-    $ narrator_normal("Заводы, спешно построенные ради экономического рывка, перестали заботиться о реке.")
+    narrator_normal "Заводы, спешно построенные ради экономического рывка, перестали заботиться о реке."
     pause 0.3
     
     # Subtle animation to represent the darkening water - using transform
@@ -46,22 +40,22 @@ label day1_intro:
     
     show intro1 at darken
     
-    $ narrator_normal("Вода потемнела, рыба исчезла, а жители всё чаще стали болеть.")
+    narrator_normal "Вода потемнела, рыба исчезла, а жители всё чаще стали болеть." 
     pause 1.0
     
     # Change music tone subtly to create tension
     $ renpy.music.set_volume(0.6, delay=2.0, channel='music')
     
-    $ narrator_dramatic("Теперь судьба города — и самой реки — в твоих руках.")
+    narrator_dramatic "Теперь судьба города — и самой реки — в твоих руках." 
     pause 0.5
     
-    $ narrator_normal("Ты — новый руководитель, которому предстоит сделать трудный выбор:")
+    narrator_normal "Ты — новый руководитель, которому предстоит сделать трудный выбор:" 
     pause 0.2
 
-    $ narrator_normal("Cпасти людей здесь и сейчас или заложить фундамент для будущего, в котором река вновь станет живой.")
+    narrator_normal "Cпасти людей здесь и сейчас или заложить фундамент для будущего, в котором река вновь станет живой."
     pause 1.0
     
-    $ narrator_dramatic("Твои решения определят, каким будет этот город завтра.")
+    narrator_dramatic "Твои решения определят, каким будет этот город завтра."
     pause 1.0
     
     # Final line with emphasis and centered effect
@@ -305,7 +299,7 @@ label day1_start:
     hide a happy
     "{i}Звонок заканчивается.{/i}"
 
-    show a at left
+    show a stand at left
     with dissolve
     
     a "Георгий, вчера мне писала Анна Петровна по поводу массовой гибели рыбы в реке. {i}(смотрит вопросительно){/i} {cps=20}С чего начнём?{/cps}"
@@ -313,10 +307,20 @@ label day1_start:
     stop music fadeout 2.0
 
 label day1_morning:
+    # Воспроизводить фоновую музыку с правильным управлением громкостью
     play music "ost/morning.ogg" volume 0.5 fadein 2.0 loop
+    
+    # Менять сцену с переходом
     scene office_morning with fade
-    "Текущий бюджет: [budget] $"
-    "Бюджет позволяет вам улучшать город, но учтите он не резиновый."
+    
+    # Отображать бюджет с правильным форматированием строк
+    $ formatted_budget = "{:,}".format(budget)
+    "Текущий бюджет: [formatted_budget] $"
+    
+    # Использовать персонажа для лучшего управления диалогами
+    narrator_normal "Бюджет позволяет вам улучшать город, но учтите, что он не резиновый."
+    
+    # Перейти к следующей сцене
     jump case_babushka
 
 label case_babushka:
