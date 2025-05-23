@@ -1,9 +1,10 @@
 ﻿# Вы можете расположить сценарий своей игры в этом файле.
 
 # Определение персонажей игры.
-define g = Character('Георгий', color="#b4befe")
-define p = Character('Министр', color="#cba6f7")
-define a = Character('Настя', color="#f38ba8")
+define g = Character('Георгий', color="#b4befe", what_slow_cps=30) # Normal typing speed
+define p = Character('Министр', color="#cba6f7", what_slow_cps=40) # Faster for official talk
+define a = Character('Настя', color="#f38ba8", what_slow_cps=25) # Slightly slower
+define narrator_dramatic = Character(None, what_slow_cps=15, what_italic=True) # Very slow for dramatic moments
 define b = Character('Бабушка')
 define f = Character('Фермер')
 define m = Character('Молодая мама')
