@@ -1,6 +1,6 @@
 label day6_intro:
     play music "ost/morning.ogg" volume 0.5 fadein 2.0 loop
-    scene river_morning with fade
+    scene river_day with fade
     "Текущий бюджет: [budget] $"
     "Рейтинг среди жителей: [rating]"
     "{i}Шестой день на посту главы города начинается с необычного утра. Вы выходите на балкон, чтобы вдохнуть свежий воздух, и замечаете в небе стаю журавлей, летящих над рекой.{/i}"
@@ -9,13 +9,27 @@ label day6_intro:
 
     "{i}В детстве вы часто наблюдали за журавлями вместе с бабушкой. Тогда река была чище, а на берегу всегда кипела жизнь.{/i}"
 
+label bridge_memories:
+    # Transition to bridge scene with fade effect
     scene bridge_morning with fade
-    show grandma at left
+    # Add ambient morning sounds
+    play ambient "audio/ambient/morning_river.ogg" volume 0.2 loop
+    # Add subtle crane calls in the distance
+    play sound "audio/nature/crane_calls.ogg" volume 0.15
+    # Show grandmother character
+    show grandma at left with dissolve
+    # Soft nostalgic music begins
+    play music "ost/memories.ogg" volume 0.25 fadein 4.0
+    # Grandmother's dialogue about the cranes
     b "Видишь, Георгий, журавли над рекой... Раньше они всегда садились на отмели."
     b "Говорили: если журавль садится у воды — значит, река жива."
+    # Slight pause for effect
+    pause 0.5
     b "А теперь пролетают мимо, не задерживаются."
+    # Final poignant statement
     b "Журавли — как надежда: если не беречь реку, улетят навсегда."
-
+    # Player character response
+    g "Я понимаю, Мария Ивановна. Мы должны что-то сделать."
     "Вы стоите на мосту, наблюдая за птицами. К вам подходит школьник с фотоаппаратом."
 
     show k1 at right
@@ -75,7 +89,7 @@ label day6_cleanup:
 
     "В течение дня вы обзваниваете местные предприятия, договариваетесь о поддержке. Некоторые соглашаются выделить воду и перчатки."
 
-    scene river_day with fade
+    scene river_morning with fade
     "К полудню на берегу собирается целая команда: школьники, пенсионеры, молодые родители, даже несколько предпринимателей."
 
     show kids_group at center
@@ -111,11 +125,25 @@ label day6_cleanup:
 
     "Вечером вы замечаете: несколько журавлей кружат над водой, будто присматриваются к новому месту."
 
+label river_renewal:
+    # Transition to evening river scene with fade effect
     scene river_evening with fade
-    show grandma at left
+    # Add evening ambient sounds
+    play ambient "audio/ambient/evening_river.ogg" volume 0.3 loop
+    # Add crane calls that sound closer and more numerous
+    play sound "audio/nature/crane_multiple.ogg" volume 0.2
+    # Show grandmother character
+    show grandma at left with dissolve
+    # Play hopeful music
+    play music "ost/renewal.ogg" volume 0.3 fadein 3.0
+    # Pause to appreciate the visual moment
+    pause 1.0
+    # Grandmother's hopeful dialogue
     b "Видишь, Георгий, журавли возвращаются. Значит, и надежда возвращается в наш город."
-
-    "Жители обсуждают уборку, рейтинг растёт. В городе появляется ощущение единства и веры в перемены."
+    # Player's optional response
+    g "Это только начало, Мария Ивановна. Мы продолжим работу."
+    # Community outcome narration with dramatic effect
+    narrator_dramatic "Жители обсуждают уборку, рейтинг растёт. В городе появляется ощущение единства и веры в перемены."
 
     jump day6_end
 
