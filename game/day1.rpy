@@ -105,7 +105,7 @@ label day1_start:
     hide intro1
     show intro2
     with dissolve
-    play music "ost/ambient_2.ogg" volume 0.6 fadeout 2.0 fadein 2.0 loop
+    play music "ost/ambient_1.ogg" volume 0.6 fadeout 2.0 fadein 2.0 loop
     
     show g say
 

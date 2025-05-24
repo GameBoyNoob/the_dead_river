@@ -1,5 +1,5 @@
 label day6_intro:
-    play music "ost/morning.ogg" volume 0.5 fadein 2.0 loop
+    play music "ost/idle.ogg" volume 0.5 fadein 2.0 loop
     scene river_day with fade
     "Текущий бюджет: [budget] $"
     "Рейтинг среди жителей: [rating]"
@@ -13,7 +13,7 @@ label bridge_memories:
     # Transition to bridge scene with fade effect
     scene bridge_morning with fade
     # Add ambient morning sounds
-    play ambient "audio/ambient/morning_river.ogg" volume 0.2 loop
+    play ambient "audio/park.ogg" volume 0.2 loop
     # Add subtle crane calls in the distance
     play sound "audio/nature/crane_calls.ogg" volume 0.15
     # Show grandmother character
@@ -129,7 +129,7 @@ label river_renewal:
     # Transition to evening river scene with fade effect
     scene river_evening with fade
     # Add evening ambient sounds
-    play ambient "audio/ambient/evening_river.ogg" volume 0.3 loop
+    play ambient "audio/park.ogg" volume 0.3 loop
     # Add crane calls that sound closer and more numerous
     play sound "audio/nature/crane_multiple.ogg" volume 0.2
     # Show grandmother character

@@ -1,5 +1,5 @@
 label day5_intro:
-    play music "ost/morning.ogg" volume 0.5 fadein 2.0 loop
+    play music "ost/idle.ogg" volume 0.5 fadein 2.0 loop
     scene office_morning with fade
     "Текущий бюджет: [budget] $"
     "Рейтинг среди жителей: [rating]"
