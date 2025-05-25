@@ -4,21 +4,30 @@
 ## Main Menu Screen
 screen main_menu():
     tag menu
-
     # Main menu background
     add gui.main_menu_background
-
     # Semi-transparent overlay for better text readability
     add Solid(gui.catppuccin_crust + "99")  # 60% opacity
-
+    # Define possible subtexts
+    $ possible_subtexts = [
+        "Путешествие в неизвестность",
+        "Твое преключение ждет",
+        "Выбор важен",
+        "Да начнется история",
+        "Мир возможностей"
+    ]
+    # Randomly select a subtext each time the menu is shown
+    $ random_subtext = renpy.random.choice(possible_subtexts)
     # Game title with animation
     frame:
         background None
         xalign 0.5
         yalign 0.15
         vbox:
+            xalign 0.5  # Ensure title and subtitle are centered
             text _("[config.name]"):
                 style "main_menu_title"
+                xalign 0.5  # Center text horizontally
                 outlines [(3, gui.catppuccin_crust, 0, 0)]
                 at transform:
                     alpha 0.0
@@ -27,34 +36,38 @@ screen main_menu():
                         ease 1.0 yoffset -5
                         ease 1.0 yoffset 5
                         repeat
+            # Add the random subtext
+            text _(random_subtext):
+                style "main_menu_subtitle"
+                xalign 0.5  # Center text horizontally
+                at transform:
+                    alpha 0.0
+                    linear 0.7 alpha 1.0
 
     # Navigation buttons with animation
     vbox:
-        xalign 0.5
-        yalign 0.6
+        xpos 0.515 xanchor "center" yalign 0.6
         spacing gui.main_menu_button_spacing
-
+        style_prefix "main_menu"
         at transform:
             alpha 0.0
             linear 0.7 alpha 1.0
-
-        style_prefix "main_menu"
-
-        textbutton _("Начать") action Start() at button_wobble
-        textbutton _("Сохранения") action ShowMenu("load") at button_wobble
-        textbutton _("Настройки") action ShowMenu("preferences") at button_wobble
-        textbutton _("Об Игре") action ShowMenu("about") at button_wobble
-
+        textbutton _("Начать") action Start() at button_hover_effect
+        textbutton _("Сохранения") action ShowMenu("load") at button_hover_effect
+        textbutton _("Настройки") action ShowMenu("preferences") at button_hover_effect
+        textbutton _("Об Игре") action ShowMenu("about") at button_hover_effect
         if renpy.variant("pc"):
-            textbutton _("Помощь") action ShowMenu("help") at button_wobble
-            textbutton _("Выйти") action Quit(confirm=not main_menu) at button_wobble
+            textbutton _("Помощь") action ShowMenu("help") at button_hover_effect
+            textbutton _("Выйти") action Quit(confirm=not main_menu) at button_hover_effect
 
-# Button wobble animation
-transform button_wobble:
+
+# Button hover effect - combines zoom and wobble
+
+transform button_hover_effect:
     on idle:
-        easein 0.1 xoffset 0
+        easein 0.2 xoffset 0 zoom 1.0
     on hover:
-        easein 0.1 xoffset 10
+        easein 0.2 xoffset 10 zoom 1.1
 
 # Main menu title style
 style main_menu_title:
@@ -64,6 +77,15 @@ style main_menu_title:
     xalign 0.5
     yalign 0.5
 
+# Main menu subtitle style
+style main_menu_subtitle:
+    font gui.interface_text_font
+    size gui.title_text_size * 0.5  # Half the size of the title
+    color gui.catppuccin_lavender
+    xalign 0.5
+    yalign 0.5
+    outlines [(2, gui.catppuccin_crust, 0, 0)]
+
 # Main menu button styles
 style main_menu_button:
     properties gui.button_properties("main_menu_button")
@@ -71,10 +93,11 @@ style main_menu_button:
     padding(15, 8)
     background Frame(Solid(gui.main_menu_button_idle_background), 5, 5)
 
+
 style main_menu_button_text:
     properties gui.button_text_properties("main_menu_button")
     size 40
-    xalign 0.5
+    xalign 0.5  # Center text within button
     color gui.main_menu_text_idle_color
     outlines gui.main_menu_text_outlines
     hover_color gui.main_menu_text_hover_color
@@ -82,6 +105,7 @@ style main_menu_button_text:
 
 style main_menu_button:
     hover_background Frame(Solid(gui.main_menu_button_hover_background), 5, 5)
+    
 ## Оператор init offset повышает приоритет инициализации в этом файле над
 ## другими файлами, из-за чего инициализация здесь запускается первее.
 init offset = -2

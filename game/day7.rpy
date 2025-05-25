@@ -60,7 +60,7 @@ label day7_square:
     jump day7_embankment
 
 label day7_embankment:
-    scene river_morning with fade
+    scene river_day with fade
     "На набережной вы встречаете школьников с плакатами: \"Чистая река — здоровый город!\""
 
     show k1 at left
@@ -295,7 +295,7 @@ label ending_good:
 
 # --- Плохая концовка ---
 label ending_bad:
-    scene river_night with fade
+    scene river_evening with fade
     "Река всё ещё мутная, берег пуст. Дети болеют, жители недовольны."
     scene office_night with fade
     show a at left
@@ -303,7 +303,7 @@ label ending_bad:
     "Бабушка проходит мимо, не глядя в глаза. Мама уводит детей подальше от берега."
     "В кабинете вы слушаете сухое объявление:"
     g "Ваши решения не принесли пользы ни людям, ни городу. Мы вынуждены вас отстранить."
-    scene river_night with fade
+    scene river_evening with fade
     "На скамейке у берега лежит забытая фотография из прошлого."
     show text "{size=+10}{color=#b03a3a}Безответственные решения лишают будущего и людей, и природу.{/color}{/size}" with dissolve
 
@@ -314,10 +314,65 @@ label ending_bad:
 label outro:
     play music "ost/outro.ogg" volume 0.5 fadein 2.0
     scene black with fade
-    "{i}История подходит к концу. Но судьба города и реки — всегда в руках тех, кто неравнодушен.{/i}"
-    "Спасибо за игру!"
+    
+    # Elegant ending message
+    show text "{size=45}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#FFFFFF}КОНЕЦ{/color}{/font}{/size}" at truecenter with dissolve
+    pause 2.0
+    hide text with dissolve
+    
+    # Main philosophical message
+    show text "{size=30}{font=AdwaitaMonoNerdFontMono-Regular.ttf}{color=#E0E0E0}{i}История подходит к концу.\nНо судьба города и реки —\nвсегда в руках тех, кто неравнодушен.{/i}{/color}{/font}{/size}" at truecenter with dissolve
+    pause 3.5
+    hide text with dissolve
+    
+    # Title screen
+    show text "{size=50}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#FFD700}СПАСИБО ЗА ИГРУ!{/color}{/font}{/size}" at truecenter with dissolve
+    pause 2.0
+    hide text with fade
+    
+    # Credits title
+    show text "{size=40}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#87CEEB}СОЗДАТЕЛИ{/color}{/font}{/size}" at truecenter with dissolve
+    pause 1.5
+    hide text with dissolve
+    
+    # Credits - Main Artist
+    show text "{size=35}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#9370DB}Главный Художник и Дизайнер{/color}{/font}{/size}\n\n{size=30}{font=AdwaitaMonoNerdFontMono-Regular.ttf}Telleyn{/font}{/size}" at truecenter with dissolve
+    pause 2.0
+    hide text with dissolve
+    
+    # Credits - Programmers
+    show text "{size=35}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#9370DB}Ведущие Программисты{/color}{/font}{/size}\n\n{size=30}{font=AdwaitaMonoNerdFontMono-Regular.ttf}Дерновский Арсений\nЛогинов Павел{/font}{/size}" at truecenter with dissolve
+    pause 2.0
+    hide text with dissolve
+    
+    # Credits - Writers
+    show text "{size=35}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#9370DB}Сценаристы{/color}{/font}{/size}\n\n{size=30}{font=AdwaitaMonoNerdFontMono-Regular.ttf}Короткий Александр\nАрсений Дерновский\nАлександр Хаев{/font}{/size}" at truecenter with dissolve
+    pause 2.0
+    hide text with dissolve
+    
+    # Credits - Editors
+    show text "{size=35}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#9370DB}Редакторы{/color}{/font}{/size}\n\n{size=30}{font=AdwaitaMonoNerdFontMono-Regular.ttf}Ольга Конон\nАлександр Хаев{/font}{/size}" at truecenter with dissolve
+    pause 2.0
+    hide text with dissolve
+    
+    # Credits - Additional Help
+    show text "{size=35}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#9370DB}Помощь{/color}{/font}{/size}\n\n{size=30}{font=AdwaitaMonoNerdFontMono-Regular.ttf}Александр Хаев\nОльга Конон\nПавел Логинов\nАнастасия Сергеевна{/font}{/size}" at truecenter with dissolve
+    pause 2.5
+    hide text with dissolve
+    
+    # License information
+    show text "{size=28}{font=AdwaitaMonoNerdFontMono-Regular.ttf}{color=#A9A9A9}Код защищен лицензией GPL-V3\nГолос, музыка и рисунки - CC BY-SA 4.0{/color}{/font}{/size}" at truecenter with dissolve
+    pause 2.0
+    hide text with dissolve
+    
+    # Final thank you and menu
+    show text "{size=40}{font=AdwaitaMonoNerdFontMono-Bold.ttf}{color=#FFD700}СПАСИБО ЗА ИГРУ!{/color}{/font}{/size}" at truecenter with dissolve
+    pause 1.5
+    
     menu:
         "Начать заново":
+            hide text with dissolve
             jump start
         "Выйти":
+            hide text with dissolve
             $ renpy.quit()
