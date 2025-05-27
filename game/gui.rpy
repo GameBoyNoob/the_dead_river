@@ -1,132 +1,255 @@
 ﻿################################################################################
 ## Инициализация
 ################################################################################
+## Main Menu Screen
+screen main_menu():
+    tag menu
+    # Main menu background
+    add gui.main_menu_background
+    # Semi-transparent overlay for better text readability
+    add Solid(gui.catppuccin_crust + "99")  # 60% opacity
+    # Define possible subtexts
+    $ possible_subtexts = [
+        "Путешествие в неизвестность",
+        "Твое преключение ждет",
+        "Выбор важен",
+        "Да начнется история",
+        "Мир возможностей"
+    ]
+    # Randomly select a subtext each time the menu is shown
+    $ random_subtext = renpy.random.choice(possible_subtexts)
+    # Game title with animation
+    frame:
+        background None
+        xalign 0.5
+        yalign 0.15
+        vbox:
+            xalign 0.5  # Ensure title and subtitle are centered
+            text _("[config.name]"):
+                style "main_menu_title"
+                xalign 0.5  # Center text horizontally
+                outlines [(3, gui.catppuccin_crust, 0, 0)]
+                at transform:
+                    alpha 0.0
+                    linear 0.5 alpha 1.0
+                    block:
+                        ease 1.0 yoffset -5
+                        ease 1.0 yoffset 5
+                        repeat
+            # Add the random subtext
+            text _(random_subtext):
+                style "main_menu_subtitle"
+                xalign 0.5  # Center text horizontally
+                at transform:
+                    alpha 0.0
+                    linear 0.7 alpha 1.0
 
+    # Navigation buttons with animation
+    vbox:
+        xpos 0.515 xanchor "center" yalign 0.6
+        spacing gui.main_menu_button_spacing
+        style_prefix "main_menu"
+        at transform:
+            alpha 0.0
+            linear 0.7 alpha 1.0
+        textbutton _("Начать") action Start() at button_hover_effect
+        textbutton _("Сохранения") action ShowMenu("load") at button_hover_effect
+        textbutton _("Настройки") action ShowMenu("preferences") at button_hover_effect
+        textbutton _("Об Игре") action ShowMenu("about") at button_hover_effect
+        if renpy.variant("pc"):
+            textbutton _("Помощь") action ShowMenu("help") at button_hover_effect
+            textbutton _("Выйти") action Quit(confirm=not main_menu) at button_hover_effect
+
+
+# Button hover effect - combines zoom and wobble
+
+transform button_hover_effect:
+    on idle:
+        easein 0.2 xoffset 0 zoom 1.0
+    on hover:
+        easein 0.2 xoffset 10 zoom 1.1
+
+# Main menu title style
+style main_menu_title:
+    font gui.interface_text_font
+    size gui.title_text_size
+    color gui.catppuccin_lavender
+    xalign 0.5
+    yalign 0.5
+
+# Main menu subtitle style
+style main_menu_subtitle:
+    font gui.interface_text_font
+    size gui.title_text_size * 0.5  # Half the size of the title
+    color gui.catppuccin_lavender
+    xalign 0.5
+    yalign 0.5
+    outlines [(2, gui.catppuccin_crust, 0, 0)]
+
+# Main menu button styles
+style main_menu_button:
+    properties gui.button_properties("main_menu_button")
+    xalign 0.5
+    padding(15, 8)
+    background Frame(Solid(gui.main_menu_button_idle_background), 5, 5)
+
+
+style main_menu_button_text:
+    properties gui.button_text_properties("main_menu_button")
+    size 40
+    xalign 0.5  # Center text within button
+    color gui.main_menu_text_idle_color
+    outlines gui.main_menu_text_outlines
+    hover_color gui.main_menu_text_hover_color
+    hover_outlines gui.main_menu_text_hover_outlines
+
+style main_menu_button:
+    hover_background Frame(Solid(gui.main_menu_button_hover_background), 5, 5)
+    
 ## Оператор init offset повышает приоритет инициализации в этом файле над
 ## другими файлами, из-за чего инициализация здесь запускается первее.
 init offset = -2
 
-## Вызываю gui.init, чтобы сбросить стили, чувствительные к стандартным
-## значениям, и задать высоту и ширину окна игры.
+## Initialize GUI with game window dimensions
 init python:
     gui.init(1920, 1080)
 
-## Включить проверку на недопустимые или нестабильные свойства в экранах или
-## преобразованиях
+## Enable check for invalid or unstable properties in screens or transforms
 define config.check_conflicting_properties = True
 
 
 ################################################################################
-## Конфигурируемые Переменные GUI
+## GUI Configurable Variables
 ################################################################################
 
 
-## Цвета #######################################################################
+## Colors #######################################################################
 ##
-## Цвета текста в интерфейсе.
+## Catppuccin Mocha palette implementation
 
-## Акцентный цвет используется в заголовках и подчёркнутых текстах.
-define gui.accent_color = '#66cc00'
+## Base colors
+define gui.catppuccin_base = "#1e1e2e"       # Background
+define gui.catppuccin_mantle = "#181825"     # Darker background
+define gui.catppuccin_crust = "#11111b"      # Darkest background
+define gui.catppuccin_text = "#cdd6f4"       # Primary text
+define gui.catppuccin_subtext = "#bac2de"    # Secondary text
+define gui.catppuccin_lavender = "#b4befe"   # Primary accent
+define gui.catppuccin_blue = "#89b4fa"       # Secondary accent
+define gui.catppuccin_sapphire = "#74c7ec"   # Tertiary accent
+define gui.catppuccin_mauve = "#cba6f7"      # Highlights
+define gui.catppuccin_pink = "#f5c2e7"       # Special elements
+define gui.catppuccin_green = "#a6e3a1"      # Success states
+define gui.catppuccin_peach = "#fab387"      # Warnings/selections
+define gui.catppuccin_red = "#f38ba8"        # Errors
 
-## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
+## Accent color used in headings and emphasized text
+define gui.accent_color = '#99ccff'
+
+## Color used for text buttons when not selected or hovered
 define gui.idle_color = '#888888'
 
-## Small_color используется в маленьком тексте, который должен быть ярче/темнее,
-## для того, чтобы выделяться.
+## Small_color is used for small text that needs to be brighter/darker to stand out
 define gui.idle_small_color = '#aaaaaa'
 
-## Цвет, используемых в кнопках и панелях, когда они наведены.
-define gui.hover_color = '#a3e066'
+## Color used for buttons and bars when hovered
+define gui.hover_color = '#c1e0ff'
 
-## Цвет, используемый текстовой кнопкой, когда она выбрана, но не наведена.
-## Кнопка может быть выбрана, если это текущий экран или текущее значение
-## настройки.
+## Color used for text buttons when selected but not hovered
 define gui.selected_color = '#ffffff'
 
-## Цвет, используемый текстовой кнопкой, когда она не может быть выбрана.
+## Color used for text buttons that cannot be selected
 define gui.insensitive_color = '#8888887f'
 
-## Цвета, используемые для частей панелей, которые не заполняются. Они
-## используются не напрямую, а только при воссоздании файлов изображений.
-define gui.muted_color = '#285100'
-define gui.hover_muted_color = '#3d7a00'
+## Colors used for unfilled parts of bars - used when recreating image files
+define gui.muted_color = '#3d5166'
+define gui.hover_muted_color = '#5b7a99'
 
-## Цвета, используемые в тексте диалогов и выборов.
+## Colors used for dialogue and choice text
 define gui.text_color = '#ffffff'
 define gui.interface_text_color = '#ffffff'
 
 
-## Шрифты и их размеры #########################################################
+## Fonts and Sizes #########################################################
 
-## Шрифт, используемый внутриигровым текстом.
+## Font used for in-game text
 define gui.text_font = "AdwaitaMonoNerdFontMono-Regular.ttf"
 
-## Шрифт, используемый именами персонажей.
+## Font used for character names
 define gui.name_text_font = "AdwaitaMonoNerdFontMono-Bold.ttf"
 
-## Шрифт, используемый текстом вне игры.
+## Font used for out-of-game text
 define gui.interface_text_font = "AdwaitaMonoNerdFontMono-Regular.ttf"
 
-## Размер нормального текста диалога.
+## Size of normal dialogue text
 define gui.text_size = 33
 
-## Размер имён персонажей.
+## Size of character names
 define gui.name_text_size = 45
 
-## Размер текста в пользовательском интерфейсе.
+## Size of text in the user interface
 define gui.interface_text_size = 33
 
-## Размер заголовков в пользовательском интерфейсе.
+## Size of labels in the user interface
 define gui.label_text_size = 36
 
-## Размер текста на экране уведомлений.
+## Size of text on the notification screen
 define gui.notify_text_size = 24
 
-## Размер заголовка игры.
+## Size of the game title
 define gui.title_text_size = 75
 
 
-## Главное и игровое меню. #####################################################
+## Main and Game Menus #####################################################
 
-## Изображения, используемые в главном и игровом меню.
+## Images used for the main and game menus
 define gui.main_menu_background = "bg/background.png"
 define gui.game_menu_background = "gui/game_menu.png"
 
+## Main Menu Customization ##################################################
 
-## Диалог ######################################################################
-##
-## Эти переменные контролируют, как диалог появляется на отдельной строчке.
+## Main menu button properties
+define gui.main_menu_button_width = 420
+define gui.main_menu_button_height = 60
+define gui.main_menu_button_spacing = 12
 
-## Высота текстового окна, содержащего диалог.
+## Main menu button backgrounds
+define gui.main_menu_button_idle_background = gui.catppuccin_mantle + "99"  # Semi-transparent
+define gui.main_menu_button_hover_background = gui.catppuccin_lavender + "33"  # Semi-transparent
+
+## Main menu text effects
+define gui.main_menu_text_idle_color = gui.catppuccin_text
+define gui.main_menu_text_hover_color = gui.catppuccin_lavender
+define gui.main_menu_text_outlines = [(2, gui.catppuccin_crust, 0, 0)]
+define gui.main_menu_text_hover_outlines = [(2, gui.catppuccin_mauve, 0, 0)]
+
+## Title positioning
+define gui.main_menu_title_xalign = 0.5
+define gui.main_menu_title_yalign = 0.1
+
+
+## Dialogue ##################################################################
+
+## Height of the dialogue text box
 define gui.textbox_height = 278
 
-## Местоположение текстового окна по вертикали экрана. 0.0 — верх, 0.5 — центр и
-## 1.0 — низ.
+## Vertical position of the text box. 0.0 is top, 0.5 is center, 1.0 is bottom
 define gui.textbox_yalign = 1.0
 
-
-## Местоположение имени говорящего персонажа по отношению к текстовому окну.
-## Это могут быть целые значения в пикселях слева и сверху от начала окна или
-## процентное отношение, например, 0.5 для центрирования.
+## Position of speaking character's name relative to text box
 define gui.name_xpos = 360
 define gui.name_ypos = 0
 
-## Горизонтальное выравнивание имени персонажа. Это может быть 0.0 для
-## левоориентированного, 0.5 для центрированного и 1.0 для правоориентированного
-## выравнивания.
+## Horizontal alignment of character name. 0.0 is left, 0.5 is center, 1.0 is right
 define gui.name_xalign = 0.0
 
-## Ширина, высота и границы окна, содержащего имя персонажа или None, для
-## автоматической размерки.
+## Width, height and borders of the box containing character name, or None for auto-sizing
 define gui.namebox_width = None
 define gui.namebox_height = None
 
-## Границы окна, содержащего имя персонажа слева, сверху, справа и снизу по
-## порядку.
+## Borders of the box containing the character name, in order: left, top, right, bottom
 define gui.namebox_borders = Borders(5, 5, 5, 5)
 
-## Если True, фон текстового окна будет моститься (расширяться по эффекту
-## плитки). Если False, фон текстового окна будет фиксированным.
+## If True, the background of the namebox will be tiled, if False, it will be scaled
 define gui.namebox_tile = False
 
 
