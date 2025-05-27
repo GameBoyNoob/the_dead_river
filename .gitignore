@@ -8,3 +8,6 @@ project.json
 traceback.txt
 .vscode/*
 game/*.bak
+android.keystore
+bundle.keystore
+android.json
