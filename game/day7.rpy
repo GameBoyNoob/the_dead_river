@@ -1,6 +1,6 @@
 label day7_intro:
     play music "ost/idle.ogg" volume 0.5 fadein 2.0 loop
-    scene river_sunrise with fade
+    scene river_evening with fade
     "Текущий бюджет: [budget] $"
     "Рейтинг среди жителей: [rating]"
     "{i}Седьмой день вашей работы начинается с рассвета над рекой. Вода тихо плещется у берега, в воздухе — лёгкая прохлада и ожидание перемен.{/i}"
