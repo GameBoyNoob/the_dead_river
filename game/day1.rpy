@@ -353,7 +353,7 @@ label case_babushka_action:
 
 label case_day1_ending:
     hide grandma
-    scene office_evening with fade
+    scene office_night with fade
     a "День окончен. Сегодня вы занимались только жалобой бабушки Анны Петровны."
     narrator_normal "Рейтинг среди жителей: [rating]."
     narrator_normal "Оставшийся бюджет: [budget]"

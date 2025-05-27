@@ -146,7 +146,7 @@ label case_grandma_emotions:
             jump case_grandma_final
 
 label case_grandma_final:
-    scene office_evening with fade
+    scene office_night with fade
     show a stand at left
     a "День подходит к концу. Сегодня вы не только занимались делами, но и услышали голос прошлого."
     a "Ваша встреча с Марией Ивановной стала событием — люди обсуждают её истории, делятся воспоминаниями, ищут старые фотографии."

@@ -282,7 +282,7 @@ label day7_night:
 
 # --- Хорошая концовка ---
 label ending_good:
-    scene river_sunset with fade
+    scene river_evening with fade
     "На берегу распускаются цветы, вода становится прозрачнее. Дети играют у воды, бабушка угощает всех пирогом."
     show grandma at left
     b "Видишь, Георгий, журавли вернулись. Значит, и надежда вернулась в наш город."

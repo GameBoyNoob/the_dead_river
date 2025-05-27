@@ -123,7 +123,7 @@ label day5_reserve_end:
     jump day6_intro
 
 label day5_conclusion:
-    scene office_evening with fade
+    scene office_night with fade
     a "День подходит к концу. Сегодня вы сделали непростой выбор."
     a "Жители внимательно следят за вашими решениями, и рейтинг отражает их доверие."
     "Рейтинг среди жителей: [rating]."
