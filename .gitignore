@@ -7,3 +7,4 @@ game/*.rpyc
 project.json
 traceback.txt
 .vscode/*
+game/*.bak
