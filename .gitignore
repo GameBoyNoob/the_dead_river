@@ -6,3 +6,4 @@ game/saves/
 game/*.rpyc
 project.json
 traceback.txt
+.vscode/*
