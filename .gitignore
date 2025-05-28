@@ -11,3 +11,4 @@ game/*.bak
 android.keystore
 bundle.keystore
 android.json
+progressive_download.txt
