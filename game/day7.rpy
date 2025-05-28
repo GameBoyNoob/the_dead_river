@@ -30,8 +30,8 @@ label day7_intro:
             jump day7_embankment
 
 label day7_square:
-    scene square_morning with fade
-    show mom at left
+    scene street_day with fade
+    show mother at left
     m "Георгий, спасибо за заботу о детях. Но мы всё ещё переживаем за воду. Что вы планируете дальше?"
 
     menu:
@@ -137,7 +137,7 @@ label day7_meeting:
     menu:
         "Дать слово учёным":
             $ rating += 1
-            b "Вода стала чище, но многое зависит от дальнейших решений. Мы предлагаем продолжить мониторинг и очистку."
+            s "Вода стала чище, но многое зависит от дальнейших решений. Мы предлагаем продолжить мониторинг и очистку."
         "Пропустить доклад — дать слово жителям":
             $ rating -= 1
             "Жители обсуждают свои проблемы, но без научных данных спорят друг с другом."
@@ -217,7 +217,7 @@ label day7_decisions:
 
 label day7_evening:
     scene river_evening with fade
-    play music "ost/finale.ogg" volume 0.6 fadein 2.0 loop
+    play music "ost/park.ogg" volume 0.6 fadein 2.0 loop
     "К вечеру на берегу начинается большой пикник. Люди приносят пироги, чай, кто-то играет на гитаре."
 
     show grandma at left
