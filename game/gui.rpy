@@ -8,16 +8,30 @@ screen main_menu():
     add gui.main_menu_background
     # Semi-transparent overlay for better text readability
     add Solid(gui.catppuccin_crust + "99")  # 60% opacity
-    # Define possible subtexts
-    $ possible_subtexts = [
+    
+    # Define possible subtexts in both languages
+    $ possible_subtexts_ru = [
         "Путешествие в неизвестность",
         "Твое преключение ждет",
         "Выбор важен",
         "Да начнется история",
         "Мир возможностей"
     ]
+    
+    $ possible_subtexts_en = [
+        "Journey into the unknown",
+        "Your adventure awaits",
+        "Choice is important",
+        "Let the story begin",
+        "World of possibilities"
+    ]
+    
+    # Select subtexts based on current language
+    $ possible_subtexts = possible_subtexts_ru if _preferences.language == "russian" else possible_subtexts_en
+    
     # Randomly select a subtext each time the menu is shown
     $ random_subtext = renpy.random.choice(possible_subtexts)
+    
     # Game title with animation
     frame:
         background None
@@ -59,10 +73,29 @@ screen main_menu():
         if renpy.variant("pc"):
             textbutton _("Помощь") action ShowMenu("help") at button_hover_effect
             textbutton _("Выйти") action Quit(confirm=not main_menu) at button_hover_effect
+            
+    # Language selector
+    frame:
+        background None
+        xalign 0.98
+        yalign 0.02
+        hbox:
+            spacing 10
+            text _("Язык"):
+                style "language_selector_text"
+            textbutton _("Русский"):
+                action Language(None)
+                style "language_button"
+                selected _preferences.language == None or _preferences.language == "russian"
+            text "/":
+                style "language_separator"
+            textbutton _("English"):
+                action Language("english")
+                style "language_button"
+                selected _preferences.language == "english"
 
 
 # Button hover effect - combines zoom and wobble
-
 transform button_hover_effect:
     on idle:
         easein 0.2 xoffset 0 zoom 1.0
@@ -105,6 +138,31 @@ style main_menu_button_text:
 
 style main_menu_button:
     hover_background Frame(Solid(gui.main_menu_button_hover_background), 5, 5)
+
+# Language selector styles
+style language_selector_text:
+    font gui.interface_text_font
+    size 28
+    color gui.catppuccin_lavender
+    outlines [(2, gui.catppuccin_crust, 0, 0)]
+
+style language_button:
+    padding(5, 2)
+    background None
+    
+style language_button_text:
+    font gui.interface_text_font
+    size 28
+    color gui.catppuccin_text
+    outlines [(2, gui.catppuccin_crust, 0, 0)]
+    hover_color gui.main_menu_text_hover_color
+    selected_color gui.catppuccin_lavender
+    
+style language_separator:
+    font gui.interface_text_font
+    size 28
+    color gui.catppuccin_lavender
+    outlines [(2, gui.catppuccin_crust, 0, 0)]
     
 ## Оператор init offset повышает приоритет инициализации в этом файле над
 ## другими файлами, из-за чего инициализация здесь запускается первее.
