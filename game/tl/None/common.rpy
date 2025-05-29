@@ -1,5 +1,4 @@
-
-translate russian strings:
+translate None strings:
 
     # 00action_file.rpy:26
     old "{#weekday}Monday"
