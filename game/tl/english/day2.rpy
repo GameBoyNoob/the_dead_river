@@ -543,3 +543,30 @@ translate english strings:
     # game/day2.rpy:228
     old "Попросить врача выступить по местному радио"
     new "Ask the doctor to speak on local radio"
+    
+# TODO: Translation updated at 2025-05-29 18:56
+
+# game/day2.rpy:146
+translate english case_mother_action_e2beb929:
+
+    # "Алексей Поднебесный" "{cps=40}Здравствуйте, Георгий. Я — Алексей Поднебесный, местный активист. Мы уже собрали десятки жалоб и готовы помочь администрации разобраться.{/cps}"
+    "Alexei Podnebesny" "{cps=40}Hello, George. I am Alexei Podnebesny, a local activist. We have already collected dozens of complaints and are ready to help the administration sort things out.{/cps}"
+
+# game/day2.rpy:147
+translate english case_mother_action_8e24bada:
+
+    # "Алексей Поднебесный" "{cps=40}Если вы не против, я могу организовать сбор подписей и контроль за качеством воды вместе с жителями. Это поможет ускорить реакцию властей и привлечь внимание СМИ.{/cps}"
+    "Alexei Podnebesny" "{cps=40}If you don't mind, I can organize a petition and water quality monitoring together with the residents. This will help speed up the authorities' response and attract media attention.{/cps}"
+
+# game/day2.rpy:262
+translate english case_day2_ending_ec1a7e65:
+
+    # narrator_normal "Оставшийся бюджет: [budget]"
+    narrator_normal "Remaining budget: [budget]"
+
+# game/day2.rpy:264
+translate english case_day2_ending_befca454:
+
+    # g "Надеюсь, завтра будет легче..."
+    g "I hope tomorrow will be easier..."
+

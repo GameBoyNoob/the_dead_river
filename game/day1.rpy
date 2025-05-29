@@ -57,7 +57,12 @@ label day1_intro:
         linear 0.5 zoom 1.05
         linear 0.5 zoom 1.0
 
-    show text "{b}Время действовать.{/b}" at center_text with dissolve
+    if _preferences.language == "english":
+        $ display_text = english_text
+    else:
+        $ display_text = russian_text
+        
+    show text display_text at center_text with dissolve
     pause 3.0
     hide text with dissolve
 
@@ -71,10 +76,11 @@ label day1_intro:
     play sound "audio/pen_writing.ogg"
 
     python:
-        prompt_text = "Как тебя зовут?"
+        prompt_text = _("Как тебя зовут?")  # The _() function marks text for translation
         name = renpy.input(prompt_text, length=20)
-        name = name.strip() or "Георгий"
-        renpy.say(None, "Добро пожаловать. Твоё путешествие начинается...")
+        name = name.strip() or _("Георгий")
+        default_welcome = _("Добро пожаловать. Твоё путешествие начинается...")
+        renpy.say(None, default_welcome)
         budget = 10000
         rating = 0
         environment = 0
