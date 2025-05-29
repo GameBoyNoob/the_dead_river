@@ -208,7 +208,7 @@ translate english case_scientists_decision_8c85e5b2:
 translate english case_scientists_decision_70208274:
 
     # s "Но, как и в любом научном деле, стопроцентной гарантии нет."
-    s "But, as with any scientific endeavor, there's no 100% guarantee."
+    s "But, as with any scientific endeavor, there's no guarantee."
 
 # game/day3.rpy:77
 translate english case_scientists_decision_e7deef52:

@@ -41,6 +41,9 @@ define narrator_dramatic = Character(None, what_slow_cps=30, what_bold=True)
 
 image city = "bg/city.png"
 image fun = "bg/fun.png"
+
+define english_text = "{b}Time to act.{/b}"
+define russian_text = "{b}Время действовать.{/b}"
 # Вместо использования оператора image можете просто
 # складывать все ваши файлы изображений в папку images.
 # Например, сцену bg room можно вызвать файлом "bg room.png",

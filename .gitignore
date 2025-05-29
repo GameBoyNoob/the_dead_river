@@ -13,3 +13,4 @@ bundle.keystore
 android.json
 progressive_download.txt
 game/tl/english/*.rpyc
+game/tl/None/common.rpyc

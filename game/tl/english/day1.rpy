@@ -534,3 +534,42 @@ translate english strings:
     # game/day1.rpy:339
     old "Оставить всё как есть"
     new "Leave everything as it is"
+    
+# TODO: Translation updated at 2025-05-29 18:56
+
+# game/day1.rpy:216
+translate english day1_start_fe636bd3:
+
+    # p "Первое — провести встречи с фермерами и выяснить, какие конкретно препараты они используют."
+    p "First — hold meetings with farmers and find out exactly which chemicals they are using."
+
+# game/day1.rpy:217
+translate english day1_start_9a38f943:
+
+    # p "Второе — проверить отчёты предприятий по фильтрации и утилизации отходов."
+    p "Second — check company reports on filtration and waste disposal."
+
+# game/day1.rpy:308
+translate english case_babushka_menu_0523e519:
+
+    # b "Спасибо, сынок! Хоть кто-то слушает."
+    b "Thank you, son! At least someone is listening."
+
+# game/day1.rpy:309
+translate english case_babushka_menu_c9964bbe:
+
+    # "Оставшийся бюджет: [budget]"
+    "Remaining budget: [budget]"
+
+# TODO: Translation updated at 2025-05-29 19:02
+
+translate english strings:
+
+    # game/day1.rpy:79
+    old "Как тебя зовут?"
+    new "What is your name?"
+
+    # game/day1.rpy:82
+    old "Добро пожаловать. Твоё путешествие начинается..."
+    new "Welcome. Your journey begins..."
+
