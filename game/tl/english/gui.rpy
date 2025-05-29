@@ -30,3 +30,19 @@ translate english strings:
     old "Выйти"
     new "Exit"
 
+# TODO: Translation updated at 2025-05-29 00:46
+
+translate english strings:
+
+    # game/gui.rpy:84
+    old "Язык"
+    new "Language"
+
+    # game/gui.rpy:86
+    old "Русский"
+    new "Russian"
+
+    # game/gui.rpy:92
+    old "English"
+    new "English"
+

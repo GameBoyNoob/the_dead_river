@@ -12,3 +12,4 @@ android.keystore
 bundle.keystore
 android.json
 progressive_download.txt
+game/tl/english/*.rpyc

@@ -27,7 +27,7 @@ screen main_menu():
     ]
     
     # Select subtexts based on current language
-    $ possible_subtexts = possible_subtexts_ru if _preferences.language == "russian" else possible_subtexts_en
+    $ possible_subtexts = possible_subtexts_ru if _preferences.language == None else possible_subtexts_en
     
     # Randomly select a subtext each time the menu is shown
     $ random_subtext = renpy.random.choice(possible_subtexts)

@@ -16,7 +16,7 @@ label day7_intro:
 
     # --- Утро: обход города ---
 
-    scene city_morning with fade
+    scene street_day with fade
     "Вы решаете пройтись по городу, чтобы увидеть всё своими глазами."
 
     show a at right
