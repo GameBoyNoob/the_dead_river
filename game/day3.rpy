@@ -177,9 +177,9 @@ label case_evening_events:
 
 label case_evening_final:
     scene office_night with fade
+    show a stand at left
     a "День окончен. Сегодня вы приняли важное решение по очистке воды, пообщались с учёными, депутатом и жителями."
     a "Перед сном вы получаете сообщение от школьников: они благодарят за внимание к экологии и приглашают на субботник."
-    a "До выборов осталось 6 дней."
     "Рейтинг среди жителей: [rating]."
     "Оставшийся бюджет: [budget]"
     play music "ost/night.ogg" volume 0.3 fadein 2.0 loop
